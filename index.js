@@ -134,7 +134,9 @@ inquirer.prompt(questions).then(function (answers) {
   `## Usage\n\n` + 
   `${answers.usage} \n\n` + 
   `## Screenshots\n\n` + 
-  `![image](${answers.screenshot})\n\n` + 
+  `![image](${answers.screenshot})\n\n` +
+  `## Tests` +
+  `${answers.tests}` + 
   `## Authors\n\n` + 
   `${answers.authors}\n\n` + 
   `## License\n\n` + 
