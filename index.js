@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 
 console.log('Enter in values to fill in your README.');
 
+// Array of questions that will be asked to the user
 let questions = [
   {
     type: 'input',
@@ -28,6 +29,11 @@ let questions = [
     type: 'input',
     name: 'screenshot',
     message: '(Optional) Please provide the file path to a screenshot of your project. Press Enter to skip if you do not have one. Can be added later.',
+  },
+  {
+    type: 'input',
+    name: 'tests',
+    message: 'Describe what kind of tests that were done on this project: '
   },
   {
     type: 'input',
@@ -62,7 +68,10 @@ let questions = [
   }
 ];
 
+// Prompting the questions to the user
 inquirer.prompt(questions).then(function (answers) {
+
+  // Determining what string to put in the licensing area of the README form
   if (answers.license === 'Leave blank'){
     answers.license = '';
   };
@@ -109,6 +118,7 @@ inquirer.prompt(questions).then(function (answers) {
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
   };
 
+  // Filling in the README form with user's answers as input
   let fileInterior = 
 
   `# ${answers.projectTitle}\n\n` +
@@ -133,7 +143,9 @@ inquirer.prompt(questions).then(function (answers) {
   `![badmath](https://img.shields.io/github/followers/KeithBillings?label=Follow%20KeithBillings&style=social)\n\n` +
   `Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/).`;
 
+  // Creating and writing a new file into current directory
   fs.writeFile('new_README.md', fileInterior, function(error){return error});
 
+  // Letting the user know their new file has been created with their parameters
   console.log('New file created at new_README.md')
 });
