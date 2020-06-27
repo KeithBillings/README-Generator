@@ -6,6 +6,12 @@ In this homework assignment I was tasked with creating a command-line applicatio
 
 ## Guide
 
+Upon cloning this repository, install dependencies with the command:
+
+```sh
+npm install
+```
+
 The application will be invoked with the command: 
 
 ```sh
@@ -21,9 +27,10 @@ The README will be populated with the following:
 * Table of Contents
 * Installation
 * Usage
-* License
-* Contributing
+* Screenshot File Path
 * Tests
+* Author(s)
+* License
 * Questions
   * User GitHub profile picture
   * User GitHub email
