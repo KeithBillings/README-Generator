@@ -31,7 +31,7 @@ The README will be populated with the following:
 
 ## Screenshot
 
-![image](/images/screenshot1.png)
+![image](./assets/images/Screenshot1.png)
 
 ## Author
 
