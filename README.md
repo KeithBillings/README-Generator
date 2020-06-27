@@ -16,7 +16,6 @@ The user will be prompted for their GitHub username and other information pertai
 
 The README will be populated with the following:
 
-* At least one badge
 * Project title
 * Description
 * Table of Contents
@@ -28,6 +27,7 @@ The README will be populated with the following:
 * Questions
   * User GitHub profile picture
   * User GitHub email
+* At least one badge
 
 ## Screenshot
 
