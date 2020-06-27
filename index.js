@@ -144,7 +144,7 @@ inquirer.prompt(questions).then(function (answers) {
   `Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/).`;
 
   // Creating and writing a new file into current directory
-  fs.writeFile('new_README.md', fileInterior, function(error){return error});
+  fs.writeFile('NEW_README.md', fileInterior, function(error){return error});
 
   // Letting the user know their new file has been created with their parameters
   console.log('New file created at new_README.md')
