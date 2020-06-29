@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 console.log('Enter in values to fill in your README.');
 
 // Array of questions that will be asked to the user
-let questions = [
+const questions = [
   {
     type: 'input',
     name: 'projectTitle',
@@ -161,11 +161,11 @@ inquirer.prompt(questions).then(function (answers) {
   };
 
   // Creating BadgeURL
-  let badgeURL = `https://img.shields.io/badge/${encodeURIComponent(answers.badgeLabel)}-${encodeURIComponent(answers.badgeMessage)}-${answers.badgeColor}?style=${answers.badgeStyle}&logo=${encodeURIComponent(answers.badgeLogo)}`;
+  const badgeURL = `https://img.shields.io/badge/${encodeURIComponent(answers.badgeLabel)}-${encodeURIComponent(answers.badgeMessage)}-${answers.badgeColor}?style=${answers.badgeStyle}&logo=${encodeURIComponent(answers.badgeLogo)}`;
 
-  
+
   // Filling in the README form with user's answers as input
-  let fileInterior = 
+  const fileInterior = 
 
   `# ${answers.projectTitle}\n\n` +
   `## Description\n\n` +
@@ -181,8 +181,8 @@ inquirer.prompt(questions).then(function (answers) {
   `${answers.usage} \n\n` + 
   `## Screenshots\n\n` + 
   `![image](${answers.screenshot})\n\n` +
-  `## Tests` +
-  `${answers.tests}` + 
+  `## Tests \n\n` +
+  `${answers.tests}\n\n` + 
   `## Authors\n\n` + 
   `${answers.authors}\n\n` + 
   `## License\n\n` + 
@@ -191,7 +191,7 @@ inquirer.prompt(questions).then(function (answers) {
   `![badgeLogo](${badgeURL})\n\n`;
 
   // Creating and writing a new file into current directory
-  fs.writeFile('NEW_README.md', fileInterior, function(error){return error});
+  fs.writeFile('NEW_README.md', fileInterior, function(error){return console.log('Error in write file is: ', error)});
 
   // Letting the user know their new file has been created with their parameters
   console.log('New file created at new_README.md')
