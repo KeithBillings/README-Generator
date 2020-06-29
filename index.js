@@ -173,8 +173,11 @@ inquirer.prompt(questions).then(function (answers) {
   `## Table of Contents\n\n` +
   ` * [Installation](#installation)\n\n` +
   ` * [Usage](#usage)\n\n` +
-  ` * [Credits](#Authors)\n\n` +
+  ` * [Screenshots](#screenshots)\n\n` +
+  ` * [Tests](#tests)\n\n` +
+  ` * [Authors](#Authors)\n\n` +
   ` * [License](#license)\n\n` +
+  ` * [Badges](#badges)\n\n` +
   `## Installation\n\n` + 
   `${answers.installation}\n\n` + 
   `## Usage\n\n` + 
