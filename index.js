@@ -160,15 +160,9 @@ inquirer.prompt(questions).then(function (answers) {
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
   };
 
-  // Encoding badge variables to be URL friendly
-  function encodingBadgeURL (label, message, color, style, logo) {
-    // Creating Badge URL
-    let badgeURL = `https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(message)}-${color}?style=${style}&logo=${encodeURIComponent(logo)}`
+  // Creating BadgeURL
+  let badgeURL = `https://img.shields.io/badge/${encodeURIComponent(answers.badgeLabel)}-${encodeURIComponent(answers.badgeMessage)}-${answers.badgeColor}?style=${answers.badgeStyle}&logo=${encodeURIComponent(answers.badgeLogo)}`;
 
-    return badgeURL
-  };
-  // Calling badgeURL function
-  let badgeURL = encodingBadgeURL(answers.badgeLabel, answers.badgeMessage, answers.badgeColor, answers.badgeStyle, answers.badgeLogo);
   
   // Filling in the README form with user's answers as input
   let fileInterior = 
