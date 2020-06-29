@@ -160,6 +160,16 @@ inquirer.prompt(questions).then(function (answers) {
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
   };
 
+  // Encoding badge variables to be URL friendly
+  function encodingBadgeURL (label, message, color, style, logo) {
+    // Creating Badge URL
+    let badgeURL = `https://img.shields.io/badge/${encodeURIComponent(label)}-${encodeURIComponent(message)}-${color}?style=${style}&logo=${encodeURIComponent(logo)}`
+
+    return badgeURL
+  };
+  // Calling badgeURL function
+  let badgeURL = encodingBadgeURL(answers.badgeLabel, answers.badgeMessage, answers.badgeColor, answers.badgeStyle, answers.badgeLogo);
+  
   // Filling in the README form with user's answers as input
   let fileInterior = 
 
@@ -184,8 +194,7 @@ inquirer.prompt(questions).then(function (answers) {
   `## License\n\n` + 
   `${answers.license}\n\n` + 
   `## Badges\n\n` + 
-  `![badmath](https://img.shields.io/github/followers/KeithBillings?label=Follow%20KeithBillings&style=social)\n\n` +
-  `Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/).`;
+  `![badgeLogo](${badgeURL})\n\n`;
 
   // Creating and writing a new file into current directory
   fs.writeFile('NEW_README.md', fileInterior, function(error){return error});
