@@ -65,6 +65,48 @@ let questions = [
     when: function(answers) {
       return answers.license !== 'Leave blank'
     }
+  },
+  {
+    type: 'input',
+    name: 'badgeLabel',
+    message: 'Time to create a badge! What do you want your badge label to be?'
+  },
+  {
+    type: 'input',
+    name: 'badgeMessage',
+    message: 'What do you want your badge message to be?'
+  },
+  {
+    type: 'input',
+    name: 'badgeColor',
+    message: 'What do you want your badge color to be?',
+    default: 'blue'
+  },
+  {
+    type: 'list',
+    name: 'badgeStyle',
+    message: 'What style do you want your badge to be?',
+    choices: [
+      'plastic',
+      'flat',
+      'flat-square',
+      'for-the-badge',
+      'social'
+    ]
+  },
+  {
+    type: 'confirm',
+    name: 'confirmBadgeLogo',
+    message: 'Do you want your badge to have a logo?'
+  },
+  {
+    type: 'input',
+    name: 'badgeLogo',
+    message: 'Please type in your badge logo name. Use simpleicons.org as a reference.',
+    default: 'GitHub',
+    when: function(answers){
+      return answers.confirmBadgeLogo === true
+    }
   }
 ];
 
