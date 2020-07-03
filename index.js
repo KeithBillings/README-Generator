@@ -7,6 +7,21 @@ console.log('Enter in values to fill in your README.');
 const questions = [
   {
     type: 'input',
+    name: 'userName',
+    message: 'What is your full name?',
+  },
+  {
+    type: 'input',
+    name: 'userEmail',
+    message: 'Please enter your email address:'
+  },
+  {
+    type: 'input',
+    name: 'githubUserName',
+    message: 'Please enter your GitHub username:'
+  },
+  {
+    type: 'input',
     name: 'projectTitle',
     message: 'What is the Project Title?',
   },
@@ -31,9 +46,9 @@ const questions = [
     message: '(Optional) Please provide the file path to a screenshot of your project. Press Enter to skip if you do not have one. Can be added later.',
   },
   {
-    type: 'input',
-    name: 'tests',
-    message: 'Describe what kind of tests that were done on this project: '
+    type: 'confirm',
+    name: 'testConfirm',
+    message: 'Does your project have a test script?'
   },
   {
     type: 'input',
@@ -54,14 +69,6 @@ const questions = [
     type: 'number',
     name: 'year',
     message: 'What year will be used for this license?',
-    when: function(answers) {
-      return answers.license !== 'Leave blank'
-    }
-  },
-  {
-    type: 'input',
-    name: 'userName',
-    message: 'What name will be used for this license? Please provide full name: ',
     when: function(answers) {
       return answers.license !== 'Leave blank'
     }
@@ -160,6 +167,20 @@ inquirer.prompt(questions).then(function (answers) {
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
   };
 
+  let tableOfContentsTests = '';
+  if (answers.testConfirm === true) {
+    answers.testConfirm = 
+    `## Tests \n\n` +
+    `To run tests: \n 
+    \`\`\` 
+    npm test 
+    \`\`\` \n\n`;
+    tableOfContentsTests = 
+    ` * [Tests](#tests)\n\n`;
+  } else {
+    answers.testConfirm = '';
+  };
+
   // Creating BadgeURL
   const badgeURL = `https://img.shields.io/badge/${encodeURIComponent(answers.badgeLabel)}-${encodeURIComponent(answers.badgeMessage)}-${answers.badgeColor}?style=${answers.badgeStyle}&logo=${encodeURIComponent(answers.badgeLogo)}`;
 
@@ -174,7 +195,7 @@ inquirer.prompt(questions).then(function (answers) {
   ` * [Installation](#installation)\n\n` +
   ` * [Usage](#usage)\n\n` +
   ` * [Screenshots](#screenshots)\n\n` +
-  ` * [Tests](#tests)\n\n` +
+  `${tableOfContentsTests}` +
   ` * [Authors](#Authors)\n\n` +
   ` * [License](#license)\n\n` +
   ` * [Badges](#badges)\n\n` +
@@ -184,18 +205,19 @@ inquirer.prompt(questions).then(function (answers) {
   `${answers.usage} \n\n` + 
   `## Screenshots\n\n` + 
   `![image](${answers.screenshot})\n\n` +
-  `## Tests \n\n` +
-  `${answers.tests}\n\n` + 
+  `${answers.testConfirm}`+ 
   `## Authors\n\n` + 
   `${answers.authors}\n\n` + 
   `## License\n\n` + 
   `${answers.license}\n\n` + 
   `## Badges\n\n` + 
-  `![badgeLogo](${badgeURL})\n\n`;
+  `![badgeLogo](${badgeURL})\n\n` +
+  `## Questions\n\n` +
+  `If you have any questions about the repo, open an issue or contact me directly at ${answers.userEmail}. You can find more of my work at [${answers.githubUserName}](https://github.com/${answers.githubUserName}/)`;
 
   // Creating and writing a new file into current directory
   fs.writeFile('NEW_README.md', fileInterior, function(error){return console.log('Error in write file is: ', error)});
 
   // Letting the user know their new file has been created with their parameters
-  console.log('New file created at new_README.md')
+  console.log('New file created at NEW_README.md')
 });
