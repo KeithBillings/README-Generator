@@ -16,7 +16,7 @@
 
 ## Description
 
-In this homework assignment I was tasked with creating a command-line application that generates a new README.md file based on user's input. 
+This is a command-line application that generates a new README.md file based on user's input. 
 
 The user will be prompted for their GitHub username, project title, description, and other information pertaining to the project the README is for.
 
