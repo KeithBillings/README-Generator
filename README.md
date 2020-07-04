@@ -49,6 +49,8 @@ The application will then be invoked with the command:
 node index.js
 ```
 
+Answer the question prompts and a NEW_README.md will be generated in the current directory.
+
 ## Usage
 
 This will be used as a quick README generator.
